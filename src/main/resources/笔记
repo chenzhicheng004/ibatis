@@ -1,0 +1,89 @@
+
+ibatis in action
+
+第一章
+
+ibatis两个最重要的特性：
+    sql外部化
+    sql封装化
+
+
+第二章
+
+sql映射文件中，sql查询的返回值可以是hashmap类型，如果查询出的记录几条，那么返回给程序的就是list<hashmap>
+
+
+第三章
+
+ibatis提供了一个使用OSCache高速缓存的实现方案
+
+ibatis允许使用动态的表名和列名
+
+配置文件：
+    propertyes节点：直接或间接定义变量，在配置文件中用${xxx}来访问，可以用resource或url属性来指定文件路径
+    settings节点：
+        lazyLoadingEnabled属性：是否启用延迟加载机制，做多表关联时有用
+        cacheModelsEnabled属性：是否启用SqlMapClient上的缓存机制，默认为true
+        enhancementEnabled属性：是否针对POJO启用字节码增强机getter/setter的调用效能，避免Reflect所带来的性能开销。默认为true
+        useStatementNamespaces属性：是否使用Statement命名空间，默认为false
+    typeAlias节点：为某个java类创建别名。ibatis内部定义好的别名有JDBC、JTA、EXTERNAL、string、int、list、hashmap、map、boolean、SIMPLE、DBCP、JNDI、FIFO、OSCACHE、LRU、MEMORY等
+    transactionManager节点：事务管理，type属性取值：
+        JDBC：通过传统JDBC Connection.commit/rollback实现事务支持
+        JTA：使用容器提供的JTA服务实现全局事务管理
+        EXTERNAL：外部事务管理，如在EJB中使用ibatis，通过EJB的部署配置即可实现自动的事务管理机制。此时ibatis将把所有事务委托给外部容器进行管理
+    dataSource节点：
+        type属性取值：
+            SIMPLE：SIMPLE是ibatis内置的dataSource实现，其中实现了一个简单的数据库连接池机制，对应 ibatis 实现类为com.ibatis.sqlmap.engine.datasource.SimpleDataSourceFactory
+            DBCP：基于Apache DBCP连接池组件实现的DataSource封装，当无容器提供DataSource服务时，建议使用该选项，对应ibatis实现类为com.ibatis.sqlmap.engine.datasource.DbcpDataSourceFactory
+            JNDI：使用J2EE容器提供的DataSource实现，DataSource将通过指定的JNDI Name从容器中获取。对应 ibatis实现类为 com.ibatis.sqlmap.engine.datasource.JndiDataSourceFactory
+        dataSource的子节点（SIMPLE&DBCP）：
+            JDBC.Driver:JDBC驱动
+            JDBC.ConnectionURL：数据库URL
+            JDBC.Username：数据库用户名
+            JDBC.Password：数据库用户密码
+            Pool.MaximumActiveConnections：数据库连接池可维持的最大容量
+            Pool.MaximumIdleConnections：数据库连接池中允许的挂起（idle）连接数，JNDI由于大部分配置是在应用服务器中进行，因此ibatis中的配置相对简单分别使用JDBC和JTA事务管理的JDNI配置：
+    typeHandler：类型处理器，将sql类型转化为java类型
+    sqlMap：sql映射文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

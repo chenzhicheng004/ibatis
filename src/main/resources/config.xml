@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE sqlMapConfig
+          PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+          "http://www.ibatis.com/dtd/sql-map-config-2.dtd" >
+<sqlMapConfig >
+    <settings useStatementNamespaces="true"/>
+    <transactionManager type ="JDBC">   <!-- 定义了ibatis的事务管理器有3中（JDBC,JTA,EXTERNAL） -->
+         <dataSource type ="SIMPLE">   <!-- type属性指定了数据源的链接类型，也有3种类型(SIMPLE,DBCP,JNDI) -->
+                 <property  name ="JDBC.Driver" value ="com.mysql.jdbc.Driver"/>
+                 <property  name ="JDBC.ConnectionURL" value ="jdbc:mysql://localhost:3306/ibatis"/>
+                 <property  name ="JDBC.Username" value ="root"/>
+                 <property  name ="JDBC.Password" value =""/>
+             </dataSource>
+       </transactionManager>
+    <sqlMap resource ="user.xml"/>
+</sqlMapConfig>
