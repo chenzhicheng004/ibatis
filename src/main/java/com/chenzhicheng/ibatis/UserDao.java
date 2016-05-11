@@ -6,6 +6,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/5/10.
@@ -28,9 +29,15 @@ public class UserDao {
         System.out.println(list);
     }
 
+    public void selectUserMapById() throws Exception{
+        Map<String,User> map = client.queryForMap("user.selectMapById",null,"id");
+        System.out.println(map);
+    }
+
     public static void main(String[] args) throws Exception{
         UserDao userDao = new UserDao();
         userDao.selectUserById();
+        userDao.selectUserMapById();
     }
 
 }

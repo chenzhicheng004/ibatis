@@ -47,14 +47,38 @@ ibatis允许使用动态的表名和列名
     sqlMap：sql映射文件
 
 
+第四章
+
+SqlMapClient中的方法：
+    queryForObject：会检查sql查询是否只返回一行，如果返回多行，就会抛出异常
+    queryForList：返回list
+    queryForMap：返回map，key是参数指定的一个字段，value则是映射语句返回的对象
+
+sql配置文件中，<sql>标签可以定义一段sql，在<select>或者<update>中通过<include>来引用该sql
 
 
+第五章
+
+可以在sql配置文件中定义调用存储过程的sql
 
 
+第六章
+
+sql配置文件中，传递给sql的参数和返回类型可以使xml或者dom类型
+
+SqlMapClient方法queryWithRowHandler，可以自定义RowHandler对查询结果进行处理，可以配合fetchSize参数用来处理查询结果数量巨大的情景（如果使用queryForList会导致内存问题）
 
 
+第八章
+
+sql配置文件中，可以用<iterator>标签来完成数组或者列表的迭代
+
+sql配置文件中，可以用<dynamic>的preappend属性来控制是否使用where条件，而不用将where条件写死
 
 
+第九章
+
+可以通过在sql映射文件中配置一些节点来使用ibatis提供的高速缓存功能（类似于hibernate的缓存）
 
 
 
